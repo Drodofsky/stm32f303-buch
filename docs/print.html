@@ -97,7 +97,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="hardware.html"><strong aria-hidden="true">1.</strong> Hardware</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="gpio.html"><strong aria-hidden="true">1.1.</strong> GPIO</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="hardware.html"><strong aria-hidden="true">1.</strong> Hardware</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="gpio.html"><strong aria-hidden="true">1.1.</strong> GPIO</a></li></ol></li><li class="chapter-item expanded "><a href="spi.html"><strong aria-hidden="true">2.</strong> SPI</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -238,6 +238,28 @@
 <p>Clock cycles dienen zur  Synchronisation der CPU. 
 <sup class="footnote-reference"><a href="#2">2</a></sup>: (<a href="https://de.wikipedia.org/wiki/Open-Collector-Ausgang">Open-Collector-Ausgang</a>)</p>
 </div>
+<h1><a class="header" href="#serial-peripheral-interface" id="serial-peripheral-interface">Serial Peripheral Interface</a></h1>
+<p>Das SPI ist Interface für synchrone und serielle Kommunikation. </p>
+<h3><a class="header" href="#funktionsweise" id="funktionsweise">Funktionsweise</a></h3>
+<p>Es werden alle Teilnehmer an folgenden drei Leitungen angschloseen:</p>
+<ul>
+<li>SCLK (auch SCK genannt) wird vom Host zur Synchronisation ausgegeben</li>
+<li>MOSI ist eine Datenleitung vom Host zum Client</li>
+<li>MISO ist eine Datenleitung vom Client zum Host</li>
+</ul>
+<p>Es gibt eine weitere Leitung vom Host zu jedem Client mit dem Namen SS (oft auch CS oder STE genannt). Diese wählt einen Client aus, in dem sie dessen SS Leitung auf null setzt. In dem Folgendem Bild sehen Sie ein möglichen Aufbau. (Ich habe die Begriffe &quot;Master&quot; und &quot;Slave&quot; gegen &quot;Host&quot; und &quot;Client&quot; ausgetauscht. )</p>
+<p><a href="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/SPI_three_slaves.svg/1920px-SPI_three_slaves.svg.png"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/SPI_three_slaves.svg/330px-SPI_three_slaves.svg.png" alt="SPI Aufbau" /></a></p>
+<p>Für die Übertragung haben sich folgende vier Modi durchgesetzt:</p>
+<table><thead><tr><th>Mode</th><th>CPOL</th><th>CPHA</th></tr></thead><tbody>
+<tr><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>2</td><td>1</td><td>0</td></tr>
+<tr><td>3</td><td>1</td><td>1</td></tr>
+</tbody></table>
+<p>Die Modi werden durch die Parameter &quot;Clock Polarity&quot; (CPOL) und &quot;Clock Phase&quot; (CPHA) festgelegt.  Bei CPOL=0 ist der Clock Idle Low, bei CPOL=1 ist der Clock Idle High.  Das beutet, dass bei CPOL = 0 ein bit versendet wird, wenn die Clock auf 1 ist.</p>
+<p>CPHA gibt an, bei der wievielten Flanke die Daten übernommen werden  sollen. Bei CPHA=0 werden sie bei der ersten Flanke übernommen und bei CPHA=1 bei der zweiten.  Dies wurde bei dem folgendem Bild visualisiert.</p>
+<p><a href="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/SPI_timing_diagram2.svg/1920px-SPI_timing_diagram2.svg.png"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/SPI_timing_diagram2.svg/330px-SPI_timing_diagram2.svg.png" alt="Quelle: Wikipedia" /></a></p>
+<p>Der Host legt seine Daten immer kurz nach der fallenden Flanke von SCK an.</p>
 
                     </main>
 

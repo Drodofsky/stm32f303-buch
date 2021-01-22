@@ -97,7 +97,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> Chapter 1</a></li><li class="chapter-item expanded "><a href="gpio.html"><strong aria-hidden="true">2.</strong> GPIO</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="hardware.html"><strong aria-hidden="true">1.</strong> Hardware</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="gpio.html"><strong aria-hidden="true">1.1.</strong> GPIO</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -165,7 +165,9 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#chapter-1" id="chapter-1">Chapter 1</a></h1>
+                        <h1><a class="header" href="#stm32f3discovery" id="stm32f3discovery">stm32f3discovery</a></h1>
+<p><img src="https://rust-embedded.github.io/discovery/assets/f3.jpg" alt="stm32f3discovery" /></p>
+<p>Auf dem Entwicklerbord ist eine  single-core ARM Cortex-M4F Prozessor. Er hat 256 KiB &quot;Flash&quot; Speicher und 48 KiB RAM.</p>
 <h1><a class="header" href="#general-purpose-ios-gpio" id="general-purpose-ios-gpio">General-purpose I/Os (GPIO)</a></h1>
 <p>Die Pins sind in Ports unterteilt. Dabei hat jeder Port 16 Pins. Die Ports sind nach den Buchstaben A, B, C, ... benannt. Die Pins werden von 0 bis 15 benannt. Jeder Pin kann als <em>Input</em> oder <em>Output</em> konfiguriert werden. Dabei kann man <em>pull-up</em> und <em>pull-down</em> Widerstände einstellen.  Man kann außerden die <em>Geschwindigkeit</em> ändern. Die Pins sind besonders schnell. Sie können alle 2 <em>clock cycles</em> <sup class="footnote-reference"><a href="#1">1</a></sup>  gesetzt werden.</p>
 <p>Jerder Port hat 10 32-bit Register. Davon sind 4 zur Konfiguration (GPIOx_MODER, GPIOx_OTYPER, GPIOx_OSPEEDR und GPIOx_PUPDR), zwei Datenregister (GPIOx_IDR und GPIOx_ODR), ein set / reset Register (GPIOx_BSRR), ein Register um die Pins zu Sperren (GPIOx_LCKR) und zwei weitere Register für alternative funktionen (GPIOx_AFRH and GPIOx_AFRL).</p>

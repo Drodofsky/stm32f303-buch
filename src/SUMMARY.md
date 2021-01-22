@@ -1,4 +1,4 @@
 # Summary
 
-- [Chapter 1](./chapter_1.md)
-- [GPIO](./gpio.md)
+- [Hardware](./hardware.md)
+  - [GPIO](./gpio.md)

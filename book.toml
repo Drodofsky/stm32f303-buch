@@ -1,9 +1,13 @@
 [book]
 authors = ["Felix"]
-language = "en"
+language = "de"
 multilingual = false
 src = "src"
 title = "stm32f303"
 
 [build]
 build-dir = "docs"
+
+[output.html]
+default-theme = "navy"
+preferred-dark-theme = "navy"

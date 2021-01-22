@@ -17,6 +17,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: install mdbook
-      run: cargo install cargo-mdbook
+      run: cargo install mdbook
     - name: build
       run: mdbook build

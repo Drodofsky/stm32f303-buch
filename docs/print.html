@@ -168,6 +168,7 @@
                         <h1><a class="header" href="#stm32f3discovery" id="stm32f3discovery">stm32f3discovery</a></h1>
 <p><img src="https://rust-embedded.github.io/discovery/assets/f3.jpg" alt="stm32f3discovery" /></p>
 <p>Auf dem Entwicklerbord ist eine  single-core ARM Cortex-M4F Prozessor. Er hat 256 KiB &quot;Flash&quot; Speicher und 48 KiB RAM.</p>
+<p><img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fmakbit.com%2Fweb%2Fwp-content%2Fuploads%2F2015%2F12%2FSTM32F303-BlockDiagram.png&amp;f=1&amp;nofb=1" alt="" /></p>
 <h1><a class="header" href="#general-purpose-ios-gpio" id="general-purpose-ios-gpio">General-purpose I/Os (GPIO)</a></h1>
 <p>Die Pins sind in Ports unterteilt. Dabei hat jeder Port 16 Pins. Die Ports sind nach den Buchstaben A, B, C, ... benannt. Die Pins werden von 0 bis 15 benannt. Jeder Pin kann als <em>Input</em> oder <em>Output</em> konfiguriert werden. Dabei kann man <em>pull-up</em> und <em>pull-down</em> Widerstände einstellen.  Man kann außerden die <em>Geschwindigkeit</em> ändern. Die Pins sind besonders schnell. Sie können alle 2 <em>clock cycles</em> <sup class="footnote-reference"><a href="#1">1</a></sup>  gesetzt werden.</p>
 <p>Jerder Port hat 10 32-bit Register. Davon sind 4 zur Konfiguration (GPIOx_MODER, GPIOx_OTYPER, GPIOx_OSPEEDR und GPIOx_PUPDR), zwei Datenregister (GPIOx_IDR und GPIOx_ODR), ein set / reset Register (GPIOx_BSRR), ein Register um die Pins zu Sperren (GPIOx_LCKR) und zwei weitere Register für alternative funktionen (GPIOx_AFRH and GPIOx_AFRL).</p>
@@ -233,6 +234,8 @@
 <p>Diese Register unterstützte ich Erstmal nicht. Eine Beschreibung wird später hinzugefügt.</p>
 <h3><a class="header" href="#gpio-port-bit-reset-register-gpiox_brr" id="gpio-port-bit-reset-register-gpiox_brr">GPIO port bit reset register (GPIOx_BRR)</a></h3>
 <p>Dieser Register ist am Offset 0x28 zu finden. Bit 16 bis 31 sind Reserviert und sollten nicht genutzt werden. Bit 0 bis 15 werden genutzt, um die Ausgabe auf 0 zusetzten. Dazu muss in dem Bit 1 geschrieben werden. Bei 0 wird keine Aktion ausgeführt. </p>
+<hr />
+<p>Meine Implementierung finden Sie <a href="https://github.com/Drodofsky/gpio">hier</a> und die Dokumentation <a href="https://drodofsky.github.io/gpio/gpio/index.html">hier</a>. </p>
 <hr />
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p>Clock cycles dienen zur  Synchronisation der CPU. 
